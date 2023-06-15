@@ -7,9 +7,13 @@ class MainCategoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text(
-      "Main Category Screen",
-      style: TextStyle(fontSize: 40),
+    return Container(
+      alignment: Alignment.topLeft,
+      padding: const EdgeInsets.all(10),
+      child: const Text(
+        "Main Category Screen",
+        style: TextStyle(fontSize: 36, fontWeight: FontWeight.w700),
+      ),
     );
   }
 }
