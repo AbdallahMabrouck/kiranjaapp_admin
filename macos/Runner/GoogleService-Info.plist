@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1093489568508-r350fo8uunpnp94m2r11i17pojl6ngu8.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1093489568508-r350fo8uunpnp94m2r11i17pojl6ngu8</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>1093489568508-eg5e7f01ogs1laaqomn52fsqpcvj2r8a.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBlw33uCYyqIMk9QjJkANpcBKZ2zcmKelc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1093489568508</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.kiranjaappAdmin.RunnerTests</string>
+	<key>PROJECT_ID</key>
+	<string>kiranjaapp-client-f032c</string>
+	<key>STORAGE_BUCKET</key>
+	<string>kiranjaapp-client-f032c.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1093489568508:ios:aed9e69a4f833b7e49c579</string>
+	<key>DATABASE_URL</key>
+	<string>https://kiranjaapp-client-f032c-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>

@@ -1,9 +1,32 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
-class CategoryScreen extends StatelessWidget {
+class CategoryScreen extends StatefulWidget {
   const CategoryScreen({super.key});
 
   static const String id = "category";
+
+  @override
+  State<CategoryScreen> createState() => _CategoryScreenState();
+}
+
+class _CategoryScreenState extends State<CategoryScreen> {
+  dynamic image;
+  String? fileName;
+
+  pickImage() async {
+    FilePickerResult? result = await FilePicker.platform
+        .pickFiles(type: FileType.image, allowMultiple: false);
+    if (result != null) {
+      setState(() {
+        image = result.files.first.bytes;
+        fileName = result.files.first.name;
+      });
+    } else {
+      // failed to pick image or user cancelled
+      print("Cancelled or Failed");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +58,16 @@ class CategoryScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(4),
                     border: Border.all(color: Colors.grey.shade800),
                   ),
-                  child: const Center(child: Text("Category Image")),
+                  child: Center(
+                      child: image == null
+                          ? const Text("Category Image")
+                          : Image.memory(image)),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: pickImage,
                   child: const Text("Upload Image"),
                 ),
               ],
