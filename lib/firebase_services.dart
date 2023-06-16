@@ -3,11 +3,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class FirebaseService {
   CollectionReference categories =
       FirebaseFirestore.instance.collection("categories");
-  /* CollectionReference mainCat =
+  CollectionReference mainCat =
       FirebaseFirestore.instance.collection("mainCategories");
   CollectionReference subCat =
       FirebaseFirestore.instance.collection("subCategories");
-  CollectionReference vendor = FirebaseFirestore.instance.collection("vendor");*/
+  /*CollectionReference vendor = FirebaseFirestore.instance.collection("vendor");*/
 
   Future<void> saveCategory(Map<String, dynamic> data) {
     return categories.doc(data["name"]).set(data);

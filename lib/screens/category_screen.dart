@@ -3,8 +3,11 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:mime_type/mime_type.dart';
+import 'package:path/path.dart';
 
 import '../firebase_services.dart';
+import '../widgets/category_list_widget.dart';
 
 class CategoryScreen extends StatefulWidget {
   const CategoryScreen({super.key});
@@ -40,18 +43,24 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
   saveImageToDb() async {
     EasyLoading.show();
-    var ref = firebase_storage.FirebaseStorage.instance
-        .ref("categoryImage/$fileName");
+    var ref = storage.ref("categoryImage/$fileName");
     try {
+      String? mimiType = mime(
+        basename(fileName!),
+      );
       await ref.putData(image);
+      var metaData = firebase_storage.SettableMetadata(contentType: mimiType);
+      firebase_storage.TaskSnapshot uploadSnapshot =
+          await ref.putData(image, metaData);
       // image will upload to firebase storage
       // need to get the download link of that image to save in firestore
-      String downloadURL = await ref.getDownloadURL().then((value) {
+      String downloadURL =
+          await uploadSnapshot.ref.getDownloadURL().then((value) {
         if (value.isNotEmpty) {
           // save data to firestore
           _service.saveCategory({
             "catName": _catName.text,
-            "image": value,
+            "image": "$value.png",
             "active": true,
           }).then((value) {
             // after save clear all data from the screen
@@ -186,6 +195,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
           const SizedBox(
             height: 10,
           ),
+          CategoryListWidget(
+            reference: _service.categories,
+          )
         ],
       ),
     );
