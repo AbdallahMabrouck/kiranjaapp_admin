@@ -9,18 +9,21 @@ class FirebaseService {
       FirebaseFirestore.instance.collection("subCategories");
   /*CollectionReference vendor = FirebaseFirestore.instance.collection("vendor");*/
 
-  Future<void> saveCategory(Map<String, dynamic> data) {
-    return categories.doc(data["name"]).set(data);
-  }
-
-  /* Future<void> saveCategory(Map<String, Object> map,
+  Future<void> saveCategory(
       {CollectionReference? reference,
       Map<String, dynamic>? data,
       String? docName}) {
     return reference!.doc(docName).set(data);
-  }  */
+  }
 
-  /* updateData(
+  /*Future<void> saveCategory(Map<String, Object> map,
+      {CollectionReference? reference,
+      Map<String, dynamic>? data,
+      String? docName}) {
+    return reference!.doc(docName).set(data);
+  }*/
+
+  updateData(
       {required Map<String, bool> data,
       String? docName,
       required CollectionReference<Object?> reference}) {}
@@ -30,5 +33,5 @@ Future<void> updateData(
     {CollectionReference? reference,
     Map<String, dynamic>? data,
     String? docName}) {
-  return reference!.doc(docName).update(data!);*/
+  return reference!.doc(docName).update(data!);
 }

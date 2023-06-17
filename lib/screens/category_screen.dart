@@ -58,11 +58,12 @@ class _CategoryScreenState extends State<CategoryScreen> {
           await uploadSnapshot.ref.getDownloadURL().then((value) {
         if (value.isNotEmpty) {
           // save data to firestore
-          _service.saveCategory({
+          _service.saveCategory(data: {
             "catName": _catName.text,
             "image": "$value.png",
             "active": true,
-          }).then((value) {
+          }, docName: _catName.text, reference: _service.categories).then(
+              (value) {
             // after save clear all data from the screen
             clear();
             EasyLoading.dismiss();
