@@ -48,9 +48,9 @@ class _CategoryListWidgetState extends State<CategoryListWidget> {
       hint: const Text("Select Main Category"),
       items: snapshot!.docs.map((e) {
         return DropdownMenuItem<String>(
-          value: e["MainCategory"],
+          value: e["mainCategory"],
           child: Text(
-            e["MainCategory"],
+            e["mainCategory"],
           ),
         );
       }).toList(),
