@@ -7,7 +7,7 @@ class FirebaseService {
       FirebaseFirestore.instance.collection("mainCategories");
   CollectionReference subCat =
       FirebaseFirestore.instance.collection("subCategories");
-  /*CollectionReference vendor = FirebaseFirestore.instance.collection("vendor");*/
+  CollectionReference vendor = FirebaseFirestore.instance.collection("vendor");
 
   Future<void> saveCategory(
       {CollectionReference? reference,
