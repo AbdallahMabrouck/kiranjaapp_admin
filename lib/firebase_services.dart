@@ -16,6 +16,11 @@ class FirebaseService {
     return reference!.doc(docName).set(data);
   }
 
+  Future<QuerySnapshot> getAdminCredentials() {
+    var result = FirebaseFirestore.instance.collection("Admin").get();
+    return result;
+  }
+
   /*Future<void> saveCategory(Map<String, Object> map,
       {CollectionReference? reference,
       Map<String, dynamic>? data,

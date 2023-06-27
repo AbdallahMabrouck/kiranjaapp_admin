@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:kiranjaapp_admin/screens/login_screen.dart';
+import 'package:kiranjaapp_admin/screens/splash_screen.dart';
+import 'package:kiranjaapp_admin/widgets/side_menu.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -15,7 +17,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,7 +25,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
-      home: const LoginScreen(title: 'Kiranja - Admin Dashboard'),
+      initialRoute: SplashScreen.id,
+      routes: {
+        SplashScreen.id: (context) => const SplashScreen(),
+        LoginScreen.id: (context) => const LoginScreen(
+              title: 'Kiranja - Admin',
+            ),
+        SideMenu.id: (context) => const SideMenu(),
+      },
       builder: EasyLoading.init(),
     );
   }
