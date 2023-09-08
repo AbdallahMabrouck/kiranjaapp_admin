@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Kiranja - Admin',
+      title: 'Kiranja - Admin Dashboard',
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
