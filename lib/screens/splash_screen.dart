@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:kiranjaapp_admin/screens/login_screen.dart';
 import 'package:kiranjaapp_admin/widgets/side_menu.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -17,22 +16,13 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Timer(const Duration(seconds: 3), () {
-      StreamBuilder<User?>(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (context, snapshot) {
-          // user is logged in
-          if (snapshot.hasData) {
-            return const SideMenu();
-          }
-
-          // user is NOT logged in
-          else {
-            return const LoginScreen(
-              title: "Kiranja - Admin",
-            );
-          }
-        },
-      );
+      FirebaseAuth.instance.authStateChanges().listen((User? user) {
+        if (user == null) {
+          Navigator.pushReplacementNamed(context, SideMenu.id);
+        } else {
+          Navigator.pushReplacementNamed(context, SideMenu.id);
+        }
+      });
     });
     super.initState();
   }
