@@ -31,6 +31,7 @@ dependencies:
   mime_type: ^1.0.0
   path: ^1.8.3
   flutter_switch: ^0.3.2
+  chips_choice: ^3.0.0
 
 dev_dependencies:
   flutter_test:
