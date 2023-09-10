@@ -1,124 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_admin_scaffold/admin_scaffold.dart';
+import '../widgets/sidebar.dart';
+import '../widgets/vendor_data_table.dart';
 
-import '../widgets/vendors_list.dart';
+class VendorsScreen extends StatefulWidget {
+  const VendorsScreen({super.key});
 
-class VendorScreen extends StatefulWidget {
   static const String id = "vendors-screen";
-  const VendorScreen({super.key});
 
   @override
-  State<VendorScreen> createState() => _VendorScreenState();
+  State<VendorsScreen> createState() => _VendorsScreenState();
 }
 
-class _VendorScreenState extends State<VendorScreen> {
-  Widget _rowHeader({int? flex, String? text}) {
-    return Expanded(
-      flex: flex!,
-      child: Container(
-        decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey.shade500),
-            color: Colors.grey.shade400),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            text!,
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
-        ),
-      ),
-    );
-  }
-
-  bool? selectedButton;
-
+class _VendorsScreenState extends State<VendorsScreen> {
+  SideBarWidget sideBar = SideBarWidget();
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.topLeft,
-      padding: const EdgeInsets.all(10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return AdminScaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.black87,
+        iconTheme: const IconThemeData(color: Colors.white),
+        title: const Text(
+          "Kiranja - Admin Dashboard",
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
+      sideBar: sideBar.sideBarMenus(context, VendorsScreen.id),
+      body: SingleChildScrollView(
+        child: Container(
+          alignment: Alignment.topLeft,
+          padding: const EdgeInsets.all(10),
+          child: const Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                "Registered Vendors",
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+              Text(
+                "Manage Vendors",
+                style: TextStyle(fontSize: 36, fontWeight: FontWeight.w700),
               ),
-              Container(
-                child: Row(
-                  children: [
-                    ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                            selectedButton == true
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey.shade500),
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          selectedButton == true;
-                        });
-                      },
-                      child: const Text("Approved"),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                            selectedButton == false
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey.shade500),
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          selectedButton == false;
-                        });
-                      },
-                      child: const Text("Not Approved"),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                            selectedButton == null
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey.shade500),
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          selectedButton == null;
-                        });
-                      },
-                      child: const Text("All"),
-                    ),
-                  ],
-                ),
-              )
+              Text("Manage all Vendors activities"),
+              Divider(
+                thickness: 5,
+              ),
+              VendorDataTable(),
+              Divider(
+                thickness: 5,
+              ),
             ],
           ),
-          const SizedBox(
-            height: 10,
-          ),
-          Row(
-            children: [
-              _rowHeader(flex: 1, text: "LOGO"),
-              _rowHeader(flex: 3, text: "BUSINESS NAME"),
-              _rowHeader(flex: 2, text: "CITY"),
-              _rowHeader(flex: 2, text: "STATE"),
-              _rowHeader(flex: 1, text: "ACTION"),
-              _rowHeader(flex: 1, text: "VIEW MORE"),
-            ],
-          ),
-          VendorsList(
-            approveStatus: selectedButton,
-          )
-        ],
+        ),
       ),
     );
   }
