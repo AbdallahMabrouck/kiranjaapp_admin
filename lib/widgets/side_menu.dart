@@ -39,9 +39,9 @@ class _SideMenuState extends State<SideMenu> {
           _selectedScreen = const BannersScreen();
         });
         break;
-      case VendorScreen.id:
+      case VendorsScreen.id:
         setState(() {
-          _selectedScreen = const VendorScreen();
+          _selectedScreen = const VendorsScreen();
         });
         break;
       case CategoryScreen.id:
@@ -112,7 +112,7 @@ class _SideMenuState extends State<SideMenu> {
               icon: CupertinoIcons.photo),
           AdminMenuItem(
             title: 'Vendors',
-            route: VendorScreen.id,
+            route: VendorsScreen.id,
             icon: Icons.group_outlined,
           ),
           AdminMenuItem(
