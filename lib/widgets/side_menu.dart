@@ -1,13 +1,19 @@
 import 'package:date_time_format/date_time_format.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-
+import 'package:kiranjaapp_admin/widgets/settings.dart';
 import '../dashboard_screen.dart';
+import '../screens/banners_screen.dart';
 import '../screens/category_screen.dart';
+import '../screens/login_screen.dart';
 import '../screens/main_category_screen.dart';
+import '../screens/notification_screen.dart';
+import '../screens/orders_screen.dart';
 import '../screens/sub_category_screen.dart';
 import '../screens/vendor_screen.dart';
+import 'admin_users.dart';
 
 class SideMenu extends StatefulWidget {
   static const String id = "side-menu";
@@ -28,6 +34,16 @@ class _SideMenuState extends State<SideMenu> {
           _selectedScreen = const DashBoardScreen();
         });
         break;
+      case BannersScreen.id:
+        setState(() {
+          _selectedScreen = const BannersScreen();
+        });
+        break;
+      case VendorScreen.id:
+        setState(() {
+          _selectedScreen = const VendorScreen();
+        });
+        break;
       case CategoryScreen.id:
         setState(() {
           _selectedScreen = const CategoryScreen();
@@ -43,9 +59,31 @@ class _SideMenuState extends State<SideMenu> {
           _selectedScreen = const SubCategoryScreen();
         });
         break;
-      case VendorScreen.id:
+      case OrdersScreen.id:
         setState(() {
-          _selectedScreen = const VendorScreen();
+          _selectedScreen = const OrdersScreen();
+        });
+        break;
+      case AdminUsers.id:
+        setState(() {
+          _selectedScreen = const AdminUsers();
+        });
+        break;
+      case NotificationsScreen.id:
+        setState(() {
+          _selectedScreen = const NotificationsScreen();
+        });
+        break;
+      case Settings.id:
+        setState(() {
+          _selectedScreen = const Settings();
+        });
+        break;
+      case LoginScreen.id:
+        setState(() {
+          _selectedScreen = const LoginScreen(
+            title: "Kiranja - Admin",
+          );
         });
         break;
     }
@@ -69,6 +107,15 @@ class _SideMenuState extends State<SideMenu> {
             icon: Icons.dashboard,
           ),
           AdminMenuItem(
+              title: "Banners",
+              route: BannersScreen.id,
+              icon: CupertinoIcons.photo),
+          AdminMenuItem(
+            title: 'Vendors',
+            route: VendorScreen.id,
+            icon: Icons.group_outlined,
+          ),
+          AdminMenuItem(
             title: 'Categories',
             icon: IconlyLight.category,
             children: [
@@ -87,10 +134,21 @@ class _SideMenuState extends State<SideMenu> {
             ],
           ),
           AdminMenuItem(
-            title: 'Vendors',
-            route: VendorScreen.id,
-            icon: Icons.group_outlined,
-          ),
+              title: "Orders",
+              route: OrdersScreen.id,
+              icon: CupertinoIcons.cart_fill),
+          AdminMenuItem(
+              title: "Admin Users",
+              route: AdminUsers.id,
+              icon: Icons.person_2_outlined),
+          AdminMenuItem(
+              title: "Send Notifications",
+              route: NotificationsScreen.id,
+              icon: Icons.notifications),
+          AdminMenuItem(
+              title: "Setting", route: Settings.id, icon: Icons.settings),
+          AdminMenuItem(
+              title: "Exit", route: LoginScreen.id, icon: Icons.exit_to_app),
         ],
         selectedRoute: SideMenu.id,
         onSelected: (item) {
