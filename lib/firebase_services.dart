@@ -112,6 +112,7 @@ class FirebaseService {
   }
 
   // Updated method to show a progress indicator and handle errors
+
   Future<void> updateBoyStatus({id, context, status}) async {
     try {
       // Show a progress indicator
