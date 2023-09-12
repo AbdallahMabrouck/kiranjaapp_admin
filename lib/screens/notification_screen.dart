@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
 import 'package:kiranjaapp_admin/widgets/sidebar.dart';
 
-import '../widgets/side_menu.dart';
-
 class NotificationsScreen extends StatefulWidget {
   const NotificationsScreen({super.key});
   static const String id = "notifications-screen";
