@@ -100,119 +100,122 @@ class _CategoryScreenState extends State<CategoryScreen> {
           ),
         ),
         sideBar: sideBar.sideBarMenus(context, CategoryScreen.id),
-        body: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              Container(
-                alignment: Alignment.topLeft,
-                padding: const EdgeInsets.all(10),
-                child: const Text(
-                  "Category Screen",
-                  style: TextStyle(fontSize: 36, fontWeight: FontWeight.w700),
+        body: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                Container(
+                  alignment: Alignment.topLeft,
+                  padding: const EdgeInsets.all(10),
+                  child: const Text(
+                    "Category Screen",
+                    style: TextStyle(fontSize: 36, fontWeight: FontWeight.w700),
+                  ),
                 ),
-              ),
-              const Divider(
-                color: Colors.grey,
-              ),
-              Row(
-                children: [
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Column(
-                    children: [
-                      Container(
-                        height: 150,
-                        width: 150,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade500,
-                          borderRadius: BorderRadius.circular(4),
-                          border: Border.all(color: Colors.grey.shade800),
-                        ),
-                        child: Center(
-                            child: image == null
-                                ? const Text("Category Image")
-                                : Image.memory(image)),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      ElevatedButton(
-                        onPressed: pickImage,
-                        child: const Text("Upload Image"),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  SizedBox(
-                    width: 200,
-                    child: TextFormField(
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return "Enter Category Name";
-                        }
-                        return null;
-                      },
-                      controller: _catName,
-                      decoration: const InputDecoration(
-                          label: Text("Enter Category Name"),
-                          contentPadding: EdgeInsets.zero),
+                const Divider(
+                  color: Colors.grey,
+                ),
+                Row(
+                  children: [
+                    const SizedBox(
+                      width: 10,
                     ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  TextButton(
-                    onPressed: clear,
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.white),
-                      side: MaterialStateProperty.all(
-                        BorderSide(color: Theme.of(context).primaryColor),
-                      ),
-                    ),
-                    child: Text(
-                      "Cancel",
-                      style: TextStyle(color: Theme.of(context).primaryColor),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  image == null
-                      ? Container()
-                      : ElevatedButton(
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              saveImageToDb();
-                            }
-                          },
-                          child: const Text(
-                            "Save",
+                    Column(
+                      children: [
+                        Container(
+                          height: 150,
+                          width: 150,
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade500,
+                            borderRadius: BorderRadius.circular(4),
+                            border: Border.all(color: Colors.grey.shade800),
                           ),
+                          child: Center(
+                              child: image == null
+                                  ? const Text("Category Image")
+                                  : Image.memory(image)),
                         ),
-                ],
-              ),
-              const Divider(
-                color: Colors.grey,
-              ),
-              Container(
-                alignment: Alignment.topLeft,
-                padding: const EdgeInsets.all(10),
-                child: const Text(
-                  "Category List",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        ElevatedButton(
+                          onPressed: pickImage,
+                          child: const Text("Upload Image"),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    SizedBox(
+                      width: 200,
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Enter Category Name";
+                          }
+                          return null;
+                        },
+                        controller: _catName,
+                        decoration: const InputDecoration(
+                            label: Text("Enter Category Name"),
+                            contentPadding: EdgeInsets.zero),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    TextButton(
+                      onPressed: clear,
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.white),
+                        side: MaterialStateProperty.all(
+                          BorderSide(color: Theme.of(context).primaryColor),
+                        ),
+                      ),
+                      child: Text(
+                        "Cancel",
+                        style: TextStyle(color: Theme.of(context).primaryColor),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    image == null
+                        ? Container()
+                        : ElevatedButton(
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                saveImageToDb();
+                              }
+                            },
+                            child: const Text(
+                              "Save",
+                            ),
+                          ),
+                  ],
                 ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              CategoryListWidget(
-                reference: _service.categories,
-              )
-            ],
+                const Divider(
+                  color: Colors.grey,
+                ),
+                Container(
+                  alignment: Alignment.topLeft,
+                  padding: const EdgeInsets.all(10),
+                  child: const Text(
+                    "Category List",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                CategoryListWidget(
+                  reference: _service.categories,
+                )
+              ],
+            ),
           ),
         ));
   }

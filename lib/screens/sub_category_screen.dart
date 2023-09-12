@@ -8,6 +8,7 @@ import 'package:mime_type/mime_type.dart';
 import 'package:path/path.dart';
 import '../firebase_services.dart';
 import '../widgets/category_list_widget.dart';
+import '../widgets/sidebar.dart';
 
 class SubCategoryScreen extends StatefulWidget {
   static const String id = "sub-category";
@@ -19,6 +20,7 @@ class SubCategoryScreen extends StatefulWidget {
 }
 
 class _SubCategoryScreenState extends State<SubCategoryScreen> {
+  SideBarWidget sideBar = SideBarWidget();
   final FirebaseStorage storage = FirebaseStorage.instance;
   final FirebaseService _service = FirebaseService();
   final TextEditingController _subCatName = TextEditingController();

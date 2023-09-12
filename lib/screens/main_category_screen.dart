@@ -4,6 +4,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:kiranjaapp_admin/firebase_services.dart';
 
 import '../widgets/main_category_list_widget.dart';
+import '../widgets/sidebar.dart';
 
 class MainCategoryScreen extends StatefulWidget {
   static const String id = "main-category";
@@ -15,6 +16,7 @@ class MainCategoryScreen extends StatefulWidget {
 }
 
 class _MainCategoryScreenState extends State<MainCategoryScreen> {
+  SideBarWidget sideBar = SideBarWidget();
   final FirebaseService _service = FirebaseService();
   final TextEditingController _mainCat = TextEditingController();
   final _formKey = GlobalKey<FormState>();
