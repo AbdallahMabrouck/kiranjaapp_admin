@@ -1,3 +1,4 @@
+import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
@@ -61,25 +62,27 @@ class SideBarWidget {
       header: Container(
         height: 50,
         width: double.infinity,
-        color: Colors.black26,
+        color: const Color(0xff444444),
         child: const Center(
           child: Text(
-            "MENU",
+            'Menu',
             style: TextStyle(
-                letterSpacing: 2,
-                color: Colors.white,
-                fontWeight: FontWeight.bold),
+              color: Colors.white,
+            ),
           ),
         ),
       ),
       footer: Container(
         height: 50,
         width: double.infinity,
-        color: Colors.black26,
+        color: const Color(0xff444444),
         child: Center(
-          child: Image.asset(
-            "assets/images/kiranja-logo.png",
-            height: 30,
+          child: Text(
+            DateTimeFormat.format(DateTime.now(),
+                format: AmericanDateFormats.dayOfWeek),
+            style: const TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
       ),

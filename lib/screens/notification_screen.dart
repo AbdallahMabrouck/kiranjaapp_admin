@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
+import 'package:kiranjaapp_admin/widgets/sidebar.dart';
 
-class NotificationsScreen extends StatelessWidget {
+import '../widgets/side_menu.dart';
+
+class NotificationsScreen extends StatefulWidget {
   const NotificationsScreen({super.key});
   static const String id = "notifications-screen";
 
+  @override
+  State<NotificationsScreen> createState() => _NotificationsScreenState();
+}
+
+class _NotificationsScreenState extends State<NotificationsScreen> {
+  SideBarWidget sideBar = SideBarWidget();
   @override
   Widget build(BuildContext context) {
     return AdminScaffold(
@@ -17,6 +26,7 @@ class NotificationsScreen extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
       ),
+      sideBar: sideBar.sideBarMenus(context, NotificationsScreen.id),
       body: SingleChildScrollView(
         child: Container(
           alignment: Alignment.topLeft,

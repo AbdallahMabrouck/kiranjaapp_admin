@@ -24,7 +24,7 @@ class DeliveryBoyScreen extends StatelessWidget {
             style: TextStyle(color: Colors.white),
           ),
         ),
-        sideBar: sideBar.sideBarMenus(context, id),
+        sideBar: sideBar.sideBarMenus(context, DeliveryBoyScreen.id),
         body: SingleChildScrollView(
           child: Container(
             alignment: Alignment.topLeft,

@@ -2,7 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:kiranjaapp_admin/widgets/side_menu.dart';
+import 'package:kiranjaapp_admin/screens/home_screen.dart';
+import 'package:kiranjaapp_admin/widgets/sidebar.dart';
 
 import '../firebase_services.dart';
 
@@ -17,6 +18,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  SideBarWidget sideBar = SideBarWidget();
   final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
   final Future<FirebaseApp> _initialization = Firebase.initializeApp();
 
@@ -42,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
         if (userCredential.user?.uid != null) {
           _navigatorKey.currentState?.pushReplacement(
             MaterialPageRoute(
-              builder: (BuildContext context) => const SideMenu(),
+              builder: (BuildContext context) => const HomeScreen(),
             ),
           );
           return;

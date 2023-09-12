@@ -3,6 +3,7 @@ import 'dart:html';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
+import 'package:kiranjaapp_admin/widgets/sidebar.dart';
 import '../firebase_services.dart';
 import '../widgets/banner_widget.dart';
 
@@ -15,6 +16,7 @@ class BannersScreen extends StatefulWidget {
 }
 
 class _BannersScreenState extends State<BannersScreen> {
+  SideBarWidget sideBar = SideBarWidget();
   final FirebaseService _services = FirebaseService();
   final _fileNameTextController = TextEditingController();
   bool _visible = false;
@@ -33,6 +35,7 @@ class _BannersScreenState extends State<BannersScreen> {
           style: TextStyle(color: Colors.white),
         ),
       ),
+      sideBar: sideBar.sideBarMenus(context, BannersScreen.id),
       body: SingleChildScrollView(
         child: Container(
           alignment: Alignment.topLeft,

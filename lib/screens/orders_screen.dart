@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
+import 'package:kiranjaapp_admin/widgets/sidebar.dart';
 
-class OrdersScreen extends StatelessWidget {
+class OrdersScreen extends StatefulWidget {
   const OrdersScreen({super.key});
   static const String id = "orders-screen";
+
+  @override
+  State<OrdersScreen> createState() => _OrdersScreenState();
+}
+
+class _OrdersScreenState extends State<OrdersScreen> {
+  SideBarWidget sideBar = SideBarWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +25,7 @@ class OrdersScreen extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
       ),
+      sideBar: sideBar.sideBarMenus(context, OrdersScreen.id),
       body: SingleChildScrollView(
         child: Container(
           alignment: Alignment.topLeft,
