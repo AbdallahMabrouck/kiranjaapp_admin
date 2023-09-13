@@ -7,6 +7,7 @@ import 'package:kiranjaapp_admin/widgets/settings.dart';
 import '../dashboard_screen.dart';
 import '../screens/banners_screen.dart';
 import '../screens/category_screen.dart';
+import '../screens/delivery_boy_screen.dart';
 import '../screens/login_screen.dart';
 import '../screens/main_category_screen.dart';
 import '../screens/notification_screen.dart';
@@ -115,6 +116,10 @@ class _SideMenuState extends State<SideMenu> {
             route: VendorsScreen.id,
             icon: Icons.group_outlined,
           ),
+          AdminMenuItem(
+              title: "Delivery Boy",
+              route: DeliveryBoyScreen.id,
+              icon: Icons.delivery_dining),
           AdminMenuItem(
             title: 'Categories',
             icon: IconlyLight.category,

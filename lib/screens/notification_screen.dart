@@ -17,7 +17,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
     return AdminScaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.black87,
+        backgroundColor: Colors.indigo,
         iconTheme: const IconThemeData(color: Colors.white),
         title: const Text(
           "Kiranja - Admin Dashboard",
