@@ -2,12 +2,15 @@ import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import '../screens/category_screen.dart';
 import '../screens/delivery_boy_screen.dart';
 import '../screens/home_screen.dart';
 import '../screens/login_screen.dart';
+import '../screens/main_category_screen.dart';
 import '../screens/notification_screen.dart';
 import '../screens/orders_screen.dart';
+import '../screens/sub_category_screen.dart';
 import '../screens/vendor_screen.dart';
 import 'admin_users.dart';
 import 'manage_banners.dart';
@@ -35,9 +38,46 @@ class SideBarWidget {
             route: DeliveryBoyScreen.id,
             icon: Icons.delivery_dining),
         AdminMenuItem(
-            title: "Categories",
-            route: CategoryScreen.id,
-            icon: Icons.category),
+          title: 'Categories',
+          icon: IconlyLight.category,
+          children: [
+            AdminMenuItem(
+              title: 'Category',
+              route: CategoryScreen.id,
+            ),
+            AdminMenuItem(
+              title: 'Main Category',
+              route: MainCategoryScreen.id,
+            ),
+            AdminMenuItem(
+              title: 'Sub Category',
+              route: SubCategoryScreen.id,
+            ),
+          ],
+        ),
+        /*AdminMenuItem(
+          title: 'Categories',
+          icon: IconlyLight.category,
+          children: [
+            AdminMenuItem(
+                title: 'Category',
+                route: CategoryScreen.id,
+                icon: IconlyLight.category,
+                children: [
+                  AdminMenuItem(
+                      title: 'Main Category',
+                      route: MainCategoryScreen.id,
+                      icon: IconlyLight.category,
+                      children: [
+                        AdminMenuItem(
+                          title: 'Sub Category',
+                          route: SubCategoryScreen.id,
+                          icon: IconlyLight.category,
+                        ),
+                      ]),
+                ]),
+          ],
+        ),*/
         AdminMenuItem(
             title: "Orders",
             route: OrdersScreen.id,

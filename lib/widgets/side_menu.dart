@@ -125,22 +125,17 @@ class _SideMenuState extends State<SideMenu> {
             icon: IconlyLight.category,
             children: [
               AdminMenuItem(
-                  title: 'Category',
-                  route: CategoryScreen.id,
-                  icon: IconlyLight.category,
-                  children: [
-                    AdminMenuItem(
-                        title: 'Main Category',
-                        route: MainCategoryScreen.id,
-                        icon: IconlyLight.category,
-                        children: [
-                          AdminMenuItem(
-                            title: 'Sub Category',
-                            route: SubCategoryScreen.id,
-                            icon: IconlyLight.category,
-                          ),
-                        ]),
-                  ]),
+                title: 'Category',
+                route: CategoryScreen.id,
+              ),
+              AdminMenuItem(
+                title: 'Main Category',
+                route: MainCategoryScreen.id,
+              ),
+              AdminMenuItem(
+                title: 'Sub Category',
+                route: SubCategoryScreen.id,
+              ),
             ],
           ),
           AdminMenuItem(
