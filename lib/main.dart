@@ -6,9 +6,11 @@ import 'package:kiranjaapp_admin/screens/category_screen.dart';
 import 'package:kiranjaapp_admin/screens/delivery_boy_screen.dart';
 import 'package:kiranjaapp_admin/screens/home_screen.dart';
 import 'package:kiranjaapp_admin/screens/login_screen.dart';
+import 'package:kiranjaapp_admin/screens/main_category_screen.dart';
 import 'package:kiranjaapp_admin/screens/notification_screen.dart';
 import 'package:kiranjaapp_admin/screens/orders_screen.dart';
 import 'package:kiranjaapp_admin/screens/splash_screen.dart';
+import 'package:kiranjaapp_admin/screens/sub_category_screen.dart';
 import 'package:kiranjaapp_admin/screens/vendor_screen.dart';
 import 'package:kiranjaapp_admin/widgets/admin_users.dart';
 import 'package:kiranjaapp_admin/widgets/settings.dart';
@@ -45,6 +47,8 @@ class MyApp extends StatelessWidget {
         BannersScreen.id: (context) => const BannersScreen(),
         VendorsScreen.id: (context) => const VendorsScreen(),
         CategoryScreen.id: (context) => const CategoryScreen(),
+        MainCategoryScreen.id: (context) => const MainCategoryScreen(),
+        SubCategoryScreen.id: (context) => const SubCategoryScreen(),
         OrdersScreen.id: (context) => const OrdersScreen(),
         NotificationsScreen.id: (context) => const NotificationsScreen(),
         AdminUsers.id: (context) => const AdminUsers(),
