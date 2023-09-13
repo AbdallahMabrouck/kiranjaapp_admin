@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+/*import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -215,37 +215,10 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 }
 
+*/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:kiranjaapp_admin/widgets/side_menu.dart';
@@ -271,23 +244,46 @@ class _LoginScreenState extends State<LoginScreen> {
   String? password;
 
   Future<void> _login() async {
-    _service.getAdminCredentials().then((value) => {
-          value.docs.forEach((doc) async {
-            if (doc.get("username") == username) {
-              if (doc.get("password") == password) {
-                UserCredential userCredential =
-                    await FirebaseAuth.instance.signInAnonymously();
-                if (userCredential.user?.uid != null) {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => const SideMenu()));
-                  return;
-                }
-              }
-            }
-          })
-        });
+    try {
+      // Get a list of admin credentials from Firebase
+      final credentialsQuerySnapshot = await _service.getAdminCredentials();
+
+      for (QueryDocumentSnapshot credentialsSnapshot
+          in credentialsQuerySnapshot.docs) {
+        final credentialsData =
+            credentialsSnapshot.data() as Map<String, dynamic>;
+
+        final storedUsername = credentialsData["username"];
+        final storedPassword = credentialsData["password"];
+
+        // Check if provided username and password match any admin credentials
+        if (storedUsername == username && storedPassword == password) {
+          // Sign in anonymously using Firebase Authentication
+          final userCredential =
+              await FirebaseAuth.instance.signInAnonymously();
+          if (userCredential.user != null) {
+            // Navigate to the home screen upon successful login
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (BuildContext context) => const SideMenu(),
+              ),
+            );
+            return;
+          }
+        }
+      }
+
+      // Show an error message if no matching credentials were found
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Invalid username or password"),
+        ),
+      );
+    } catch (e) {
+      print("Error during login: $e");
+      // Handle login error here, e.g., show an error message
+    }
   }
 
   @override
@@ -303,17 +299,17 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
       body: FutureBuilder(
-        // initialize flutter fire
+        // Initialize Firebase
         future: _initialization,
         builder: (context, snapshot) {
-          // check for errors
+          // Check for initialization errors
           if (snapshot.hasError) {
             return const Center(
               child: Text("Connection Failed"),
             );
           }
 
-          // once complete, show your application
+          // Once initialization is complete, show the login form
           if (snapshot.connectionState == ConnectionState.done) {
             return Container(
               decoration: const BoxDecoration(
@@ -394,10 +390,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                     },
                                     obscureText: true,
                                     decoration: const InputDecoration(
-                                        labelText: "Minimum 6 characters",
+                                        labelText: "Password",
                                         prefixIcon:
                                             Icon(Icons.vpn_key_off_rounded),
-                                        hintText: "Password",
+                                        hintText: "Minimum 6 characters",
                                         focusColor: Color(0xFF262AAA),
                                         contentPadding: EdgeInsets.only(
                                             left: 20, right: 20),
@@ -442,7 +438,7 @@ class _LoginScreenState extends State<LoginScreen> {
             );
           }
 
-          // otherwise
+          // Show a loading indicator while initializing Firebase
           return const Center(
             child: CircularProgressIndicator(),
           );
@@ -451,4 +447,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-*/

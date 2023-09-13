@@ -17,6 +17,7 @@ class FirebaseService {
   CollectionReference vendors =
       FirebaseFirestore.instance.collection("vendors");
   CollectionReference boys = FirebaseFirestore.instance.collection("boys");
+  // CollectionReference Admin = FirebaseFirestore.instance.collection("Admin");
 
   Future<void> saveCategory(
       {CollectionReference? reference,
@@ -32,10 +33,15 @@ class FirebaseService {
     return reference!.doc(docName).update(data!);
   }
 
-  Future<QuerySnapshot> getAdminCredentials() {
-    var result = FirebaseFirestore.instance.collection("Admin").get();
+  Future<QuerySnapshot> getAdminCredentials() async {
+    var result = await FirebaseFirestore.instance.collection("Admin").get();
     return result;
   }
+
+  /*Future<QuerySnapshot> getAdminCredentials() {
+    var result = FirebaseFirestore.instance.collection("Admin").get();
+    return result;
+  }*/
 
   Future<String> uploadBannerImageToDb(url) async {
     String downloadUrl = await storage.ref(url).getDownloadURL();
