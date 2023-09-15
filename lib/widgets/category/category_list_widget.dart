@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:kiranjaapp_admin/firebase_services.dart';
+import 'package:kiranjaapp_admin/widgets/category/category_card_widget.dart';
 
 class CategoryListWidget extends StatelessWidget {
   const CategoryListWidget({super.key});
@@ -29,9 +30,11 @@ class CategoryListWidget extends StatelessWidget {
 
             return Wrap(
               direction: Axis.horizontal,
-              children: snapshot.data.docs
-                  .map((DocumentSnapshot document) {})
-                  .toList(),
+              children: snapshot.data!.docs.map((DocumentSnapshot document) {
+                return CategoryCard(
+                  document: document,
+                );
+              }).toList(),
             );
           }),
     );

@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class CategoryCard extends StatelessWidget {
-  const CategoryCard({super.key});
+  final DocumentSnapshot document;
+  const CategoryCard({super.key, required this.document});
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +22,9 @@ class CategoryCard extends StatelessWidget {
                 SizedBox(
                   height: 70,
                   width: double.infinity,
-                  child: Image.network(""),
+                  child: Image.network(document["image"]),
                 ),
-                const Flexible(child: Text("300 products"))
+                Flexible(child: Text(document["name"]))
               ],
             ),
           ),
