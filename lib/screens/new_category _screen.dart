@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
-import 'package:kiranjaapp_admin/widgets/vendors/vendor_data_table.dart';
+import 'package:kiranjaapp_admin/widgets/category/category_upload_widget.dart';
 import '../widgets/sidebar.dart';
 
 class NewCategoryScreen extends StatefulWidget {
@@ -41,11 +41,11 @@ class _NewCategoryScreenState extends State<NewCategoryScreen> {
                   "Manage Vendors",
                   style: TextStyle(fontSize: 36, fontWeight: FontWeight.w700),
                 ),
-                Text("Manage all Vendors activities"),
+                Text("Add New Categories and Sub-Categories"),
                 Divider(
                   thickness: 5,
                 ),
-                VendorDataTable(),
+                CategoryCreateWidget(),
                 Divider(
                   thickness: 5,
                 ),
