@@ -17,7 +17,6 @@ class FirebaseService {
   CollectionReference vendors =
       FirebaseFirestore.instance.collection("vendors");
   CollectionReference boys = FirebaseFirestore.instance.collection("boys");
-  // CollectionReference Admin = FirebaseFirestore.instance.collection("Admin");
 
   Future<void> saveCategory(
       {CollectionReference? reference,
@@ -38,11 +37,6 @@ class FirebaseService {
     return result;
   }
 
-  /*Future<QuerySnapshot> getAdminCredentials() {
-    var result = FirebaseFirestore.instance.collection("Admin").get();
-    return result;
-  }*/
-
   Future<String> uploadBannerImageToDb(url) async {
     String downloadUrl = await storage.ref(url).getDownloadURL();
     firestore.collection("slider").add({
@@ -53,6 +47,61 @@ class FirebaseService {
 
   deleteBannerFromDb(id) async {
     firestore.collection("slider").doc(id).delete();
+  }
+
+  Future<void> confirmDeleteDialog({title, message, context, id}) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+            title: Text(title),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: [
+                  Text(message),
+                ],
+              ),
+            ),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text("Cancel")),
+              TextButton(
+                  onPressed: () {
+                    deleteBannerFromDb(id);
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text("Delete")),
+            ]);
+      },
+    );
+  }
+
+  Future<void> _showMyDialog({title, message, context}) async {
+    return showDialog<void>(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+              title: Text(title),
+              content: SingleChildScrollView(
+                child: ListBody(
+                  children: [
+                    Text(message),
+                  ],
+                ),
+              ),
+              actions: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text("OK")),
+              ]);
+        });
   }
 
   updateVendorStatus({id, status}) async {
@@ -325,78 +374,4 @@ class FirebaseService {
 
     }
   }
-
-
-
-  Future<void> saveCategory(Map<String, Object> map,
-      {CollectionReference? reference,
-      Map<String, dynamic>? data,
-      String? docName}) {
-    return reference!.doc(docName).set(data);
-  }*/
-
-
-  /* Future<void> _confirmDeleteDialog ({title, message, context}) async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false,
-      bulder: (BuildContext context){
-        return AlertDialog(
-          title: Text(title),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children:<widget> [
-                Text(message),
-
-              ],
-            ),
-          ),
-          actions: <widget> [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text("Cancel")),
-            TextButton(
-              onPressed: () {
-                deleteBannerFromDb(id);
-                Navigator.of(context).pop();
-              },
-              child: Text("Delete")),
-          ]
-        );
-      }
-    );
-  }*/
-
-  /* Future<void> _showMyDialog ({title, message, context}) async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false,
-      bulder: (BuildContext context){
-        return AlertDialog(
-          title: Text(title),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children:<widget> [
-                Text(message),
-
-              ],
-            ),
-          ),
-          actions: <widget> [
-
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text("OK")),
-          ]
-        );
-      }
-    );
-  }*/
-
-
-
-
+*/

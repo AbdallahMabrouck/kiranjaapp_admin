@@ -105,7 +105,13 @@ class _BannersScreenState extends State<BannersScreen> {
                                 onPressed: () {
                                   _services
                                       .uploadBannerImageToDb(_url)
-                                      .then((downloadUrl) {});
+                                      .then((downloadUrl) {
+                                    _services.showMyDialog(
+                                        context: context,
+                                        title: "New Banner Image",
+                                        message:
+                                            "Saved Banner Image Successifully");
+                                  });
                                 },
                                 child: const Text(
                                   "Save Image",

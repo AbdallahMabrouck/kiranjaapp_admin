@@ -58,7 +58,12 @@ class BannerWidget extends StatelessWidget {
                               backgroundColor: Colors.white,
                               child: IconButton(
                                 onPressed: () {
-                                  _services.deleteBannerFromDb(document.id);
+                                  _services.confirmDeleteDialog(
+                                      context: context,
+                                      title: "Delete Banner",
+                                      message:
+                                          "Are you sure you want to delete ? ",
+                                      id: document.id);
                                 },
                                 icon:
                                     const Icon(Icons.delete, color: Colors.red),

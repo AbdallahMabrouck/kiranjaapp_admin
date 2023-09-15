@@ -8,6 +8,7 @@ import '../screens/delivery_boy_screen.dart';
 import '../screens/home_screen.dart';
 import '../screens/login_screen.dart';
 import '../screens/main_category_screen.dart';
+import '../screens/new_category _screen.dart';
 import '../screens/notification_screen.dart';
 import '../screens/orders_screen.dart';
 import '../screens/sub_category_screen.dart';
@@ -37,6 +38,10 @@ class SideBarWidget {
             title: "Delivery Boy",
             route: DeliveryBoyScreen.id,
             icon: Icons.delivery_dining),
+        AdminMenuItem(
+            title: "New Category Screen",
+            route: NewCategoryScreen.id,
+            icon: Icons.category),
         AdminMenuItem(
           title: 'Categories',
           icon: IconlyLight.category,
