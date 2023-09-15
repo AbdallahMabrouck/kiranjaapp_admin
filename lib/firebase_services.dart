@@ -17,6 +17,8 @@ class FirebaseService {
   CollectionReference vendors =
       FirebaseFirestore.instance.collection("vendors");
   CollectionReference boys = FirebaseFirestore.instance.collection("boys");
+  CollectionReference category =
+      FirebaseFirestore.instance.collection("category");
 
   Future<void> saveCategory(
       {CollectionReference? reference,
@@ -37,6 +39,7 @@ class FirebaseService {
     return result;
   }
 
+  // Banner
   Future<String> uploadBannerImageToDb(url) async {
     String downloadUrl = await storage.ref(url).getDownloadURL();
     firestore.collection("slider").add({
@@ -47,6 +50,16 @@ class FirebaseService {
 
   deleteBannerFromDb(id) async {
     firestore.collection("slider").doc(id).delete();
+  }
+
+  // Category
+  Future<String> uploadCategoryImageToDb(url, catName) async {
+    String downloadUrl = await storage.ref(url).getDownloadURL();
+    category.doc(catName).set({
+      "image": downloadUrl,
+      "name": catName,
+    });
+    return downloadUrl;
   }
 
   Future<void> confirmDeleteDialog({title, message, context, id}) async {

@@ -14,6 +14,7 @@ class CategoryCreateWidget extends StatefulWidget {
 class _CategoryCreateWidgetState extends State<CategoryCreateWidget> {
   final FirebaseService _services = FirebaseService();
   final _fileNameTextController = TextEditingController();
+  final _categoryNameTextController = TextEditingController();
   bool _visible = false;
   bool _imageSelected = true;
   String? _url;
@@ -32,23 +33,40 @@ class _CategoryCreateWidgetState extends State<CategoryCreateWidget> {
               visible: _visible,
               child: Row(
                 children: [
+                  SizedBox(
+                    width: 200,
+                    height: 30,
+                    child: TextField(
+                      controller: _categoryNameTextController,
+                      decoration: const InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.black, width: 1)),
+                          filled: true,
+                          fillColor: Colors.white,
+                          hintText: "No Category name given",
+                          border: OutlineInputBorder(),
+                          contentPadding: EdgeInsets.only(left: 20)),
+                    ),
+                  ),
                   AbsorbPointer(
                     absorbing: true,
                     child: SizedBox(
-                        width: 300,
-                        height: 30,
-                        child: TextField(
-                          controller: _fileNameTextController,
-                          decoration: const InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.black, width: 1)),
-                              filled: true,
-                              fillColor: Colors.white,
-                              hintText: "No Image Selected",
-                              border: OutlineInputBorder(),
-                              contentPadding: EdgeInsets.only(left: 20)),
-                        )),
+                      width: 200,
+                      height: 30,
+                      child: TextField(
+                        controller: _fileNameTextController,
+                        decoration: const InputDecoration(
+                            focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.black, width: 1)),
+                            filled: true,
+                            fillColor: Colors.white,
+                            hintText: "No Image Selected",
+                            border: OutlineInputBorder(),
+                            contentPadding: EdgeInsets.only(left: 20)),
+                      ),
+                    ),
                   ),
                   ElevatedButton(
                     onPressed: () {
@@ -66,26 +84,36 @@ class _CategoryCreateWidgetState extends State<CategoryCreateWidget> {
                     absorbing: _imageSelected,
                     child: ElevatedButton(
                       onPressed: () {
+                        if (_categoryNameTextController.text.isEmpty) {
+                          _services.showMyDialog(
+                              context: context,
+                              title: "Add New Category",
+                              message: "New Category Name not given");
+                        }
                         _services
-                            .uploadBannerImageToDb(_url)
+                            .uploadCategoryImageToDb(
+                                _url, _categoryNameTextController)
                             .then((downloadUrl) {
                           _services.showMyDialog(
                               context: context,
-                              title: "New Banner Image",
-                              message: "Saved Banner Image Successifully");
+                              title: "New Category",
+                              message: "Saved New Category Successifully");
                         });
+                        _categoryNameTextController.clear();
+                        _fileNameTextController.clear();
                       },
                       child: const Text(
-                        "Save Image",
+                        "Save New Category",
                         style: TextStyle(color: Colors.white),
                       ),
+                      // Color: _imageselected ? Colors.black12 : Colors.black54
                     ),
                   ),
                 ],
               ),
             ),
             Visibility(
-              visible: _visible,
+              visible: _visible ? false : true,
               child: ElevatedButton(
                 onPressed: () {
                   setState(() {
@@ -93,7 +121,7 @@ class _CategoryCreateWidgetState extends State<CategoryCreateWidget> {
                   });
                 },
                 child: const Text(
-                  "Add New Banner",
+                  "Add New Category",
                   style: TextStyle(color: Colors.white),
                 ),
               ),
@@ -123,7 +151,7 @@ class _CategoryCreateWidgetState extends State<CategoryCreateWidget> {
   void uploadStorage() {
     // upload selected image to firebase storage
     final dateTime = DateTime.now();
-    final path = "bannerImage/${dateTime.microsecondsSinceEpoch}";
+    final path = "CategoryImage/${dateTime.microsecondsSinceEpoch}";
     uploadImage(onSelected: (file) {
       setState(() {
         _fileNameTextController.text = file.name;

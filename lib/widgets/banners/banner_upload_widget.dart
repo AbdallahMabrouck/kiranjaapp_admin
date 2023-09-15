@@ -1,5 +1,4 @@
 import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import '../../firebase_services.dart';
@@ -85,7 +84,7 @@ class _BannerUploadWidgetState extends State<BannerUploadWidget> {
               ),
             ),
             Visibility(
-              visible: _visible,
+              visible: _visible ? false : true,
               child: ElevatedButton(
                 onPressed: () {
                   setState(() {
