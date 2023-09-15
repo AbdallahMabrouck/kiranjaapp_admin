@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
 import 'package:kiranjaapp_admin/widgets/category/category_upload_widget.dart';
+import 'package:kiranjaapp_admin/widgets/category_list_widget.dart';
 import '../widgets/sidebar.dart';
 
 class NewCategoryScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class _NewCategoryScreenState extends State<NewCategoryScreen> {
   Widget build(BuildContext context) {
     SideBarWidget sideBar = SideBarWidget();
     return AdminScaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.grey.shade100,
         appBar: AppBar(
           backgroundColor: Colors.indigo,
           iconTheme: const IconThemeData(color: Colors.white),
@@ -49,6 +50,7 @@ class _NewCategoryScreenState extends State<NewCategoryScreen> {
                 Divider(
                   thickness: 5,
                 ),
+                CategoryListWidget(reference: ,)
               ],
             ),
           ),

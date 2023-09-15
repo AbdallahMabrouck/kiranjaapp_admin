@@ -10,7 +10,7 @@ class CategoryListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     FirebaseService _services = FirebaseService();
 
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: StreamBuilder(
           stream: _services.category.snapshots(),
