@@ -1,8 +1,8 @@
 import 'package:chips_choice/chips_choice.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:kiranjaapp_admin/widgets/vendor_details_box.dart';
-import '../firebase_services.dart';
+import 'package:kiranjaapp_admin/widgets/vendors/vendor_details_box.dart';
+import '../../firebase_services.dart';
 
 class VendorDataTable extends StatefulWidget {
   const VendorDataTable({Key? key}) : super(key: key);

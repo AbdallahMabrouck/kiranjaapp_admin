@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
 import '../widgets/sidebar.dart';
-import '../widgets/vendor_data_table.dart';
+import '../widgets/vendors/vendor_data_table.dart';
 
 class VendorsScreen extends StatefulWidget {
   const VendorsScreen({super.key});

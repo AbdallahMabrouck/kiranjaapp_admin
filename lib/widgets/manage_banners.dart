@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
 // import 'package:kiranjaapp_admin/widgets/sidebar.dart';
 import '../firebase_services.dart';
-import 'banner_widget.dart';
+import 'banners/banner_widget.dart';
 
 class BannersScreen extends StatefulWidget {
   const BannersScreen({super.key});
