@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 // import 'package:firebase/firebase.dart' as fb;
 import '../../firebase_services.dart';
 
-class CategoryCreateWidget extends StatefulWidget {
-  const CategoryCreateWidget({super.key});
+class CategoryUploadWidget extends StatefulWidget {
+  const CategoryUploadWidget({super.key});
 
   @override
-  State<CategoryCreateWidget> createState() => _CategoryCreateWidgetState();
+  State<CategoryUploadWidget> createState() => _CategoryUploadWidgetState();
 }
 
-class _CategoryCreateWidgetState extends State<CategoryCreateWidget> {
+class _CategoryUploadWidgetState extends State<CategoryUploadWidget> {
   final FirebaseService _services = FirebaseService();
   final _fileNameTextController = TextEditingController();
   final _categoryNameTextController = TextEditingController();
@@ -85,7 +85,6 @@ class _CategoryCreateWidgetState extends State<CategoryCreateWidget> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (_categoryNameTextController.text.isEmpty) {
-                          // return
                           _services.showMyDialog(
                               context: context,
                               title: "Add New Category",

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
 import 'package:kiranjaapp_admin/firebase_services.dart';
 import 'package:kiranjaapp_admin/widgets/category/category_upload_widget.dart';
@@ -44,7 +44,7 @@ class _NewCategoryScreenState extends State<NewCategoryScreen> {
                 const Divider(
                   thickness: 5,
                 ),
-                const CategoryCreateWidget(),
+                const CategoryUploadWidget(),
                 const Divider(
                   thickness: 5,
                 ),
@@ -56,4 +56,4 @@ class _NewCategoryScreenState extends State<NewCategoryScreen> {
           ),
         ));
   }
-}
+}*/
