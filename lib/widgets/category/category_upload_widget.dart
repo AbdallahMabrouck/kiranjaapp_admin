@@ -85,6 +85,7 @@ class _CategoryCreateWidgetState extends State<CategoryCreateWidget> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (_categoryNameTextController.text.isEmpty) {
+                          // return
                           _services.showMyDialog(
                               context: context,
                               title: "Add New Category",

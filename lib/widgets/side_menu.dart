@@ -2,17 +2,18 @@ import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
+// import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:kiranjaapp_admin/screens/new_category%20_screen.dart';
 import 'package:kiranjaapp_admin/widgets/settings.dart';
 import '../dashboard_screen.dart';
 import '../screens/banners_screen.dart';
-import '../screens/category_screen.dart';
+// import '../screens/category_screen.dart';
 import '../screens/delivery_boy_screen.dart';
 import '../screens/login_screen.dart';
-import '../screens/main_category_screen.dart';
+// import '../screens/main_category_screen.dart';
 import '../screens/notification_screen.dart';
 import '../screens/orders_screen.dart';
-import '../screens/sub_category_screen.dart';
+// import '../screens/sub_category_screen.dart';
 import '../screens/vendor_screen.dart';
 import 'admin_users.dart';
 
@@ -45,11 +46,11 @@ class _SideMenuState extends State<SideMenu> {
           _selectedScreen = const VendorsScreen();
         });
         break;
-      case CategoryScreen.id:
+      case NewCategoryScreen.id:
         setState(() {
-          _selectedScreen = const CategoryScreen();
+          _selectedScreen = const NewCategoryScreen();
         });
-        break;
+        /*break;
       case MainCategoryScreen.id:
         setState(() {
           _selectedScreen = const MainCategoryScreen();
@@ -58,7 +59,7 @@ class _SideMenuState extends State<SideMenu> {
       case SubCategoryScreen.id:
         setState(() {
           _selectedScreen = const SubCategoryScreen();
-        });
+        });*/
         break;
       case OrdersScreen.id:
         setState(() {
@@ -117,10 +118,15 @@ class _SideMenuState extends State<SideMenu> {
             icon: Icons.group_outlined,
           ),
           AdminMenuItem(
+              title: "Categories",
+              route: NewCategoryScreen.id,
+              icon: Icons.category),
+          AdminMenuItem(
               title: "Delivery Boy",
               route: DeliveryBoyScreen.id,
               icon: Icons.delivery_dining),
-          AdminMenuItem(
+
+          /* AdminMenuItem(
             title: 'Categories',
             icon: IconlyLight.category,
             children: [
@@ -137,7 +143,7 @@ class _SideMenuState extends State<SideMenu> {
                 route: SubCategoryScreen.id,
               ),
             ],
-          ),
+          ),*/
           AdminMenuItem(
               title: "Orders",
               route: OrdersScreen.id,

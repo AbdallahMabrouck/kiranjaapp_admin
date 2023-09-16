@@ -6,12 +6,9 @@ class FirebaseService {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   FirebaseStorage storage = FirebaseStorage.instance;
 
-  CollectionReference categories =
-      FirebaseFirestore.instance.collection("categories");
-  CollectionReference mainCat =
-      FirebaseFirestore.instance.collection("mainCategories");
-  CollectionReference subCat =
-      FirebaseFirestore.instance.collection("subCategories");
+  // CollectionReference categories = FirebaseFirestore.instance.collection("categories");
+  // CollectionReference mainCat = FirebaseFirestore.instance.collection("mainCategories");
+  // CollectionReference subCat = FirebaseFirestore.instance.collection("subCategories");
   CollectionReference vendor = FirebaseFirestore.instance.collection("vendor");
   CollectionReference banners = FirebaseFirestore.instance.collection("slider");
   CollectionReference vendors =

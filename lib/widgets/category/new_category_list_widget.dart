@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:kiranjaapp_admin/firebase_services.dart';
 import 'package:kiranjaapp_admin/widgets/category/category_card_widget.dart';
 
-class CategoryListWidget extends StatelessWidget {
-  const CategoryListWidget({super.key});
+class NewCategoryListWidget extends StatelessWidget {
+  final CollectionReference reference;
+  const NewCategoryListWidget({super.key, required this.reference});
 
   @override
   Widget build(BuildContext context) {

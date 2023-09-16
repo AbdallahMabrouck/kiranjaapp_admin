@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
 import 'package:kiranjaapp_admin/firebase_services.dart';
 import 'package:kiranjaapp_admin/widgets/category/category_upload_widget.dart';
-import 'package:kiranjaapp_admin/widgets/category_list_widget.dart';
+import 'package:kiranjaapp_admin/widgets/category/new_category_list_widget.dart';
 import '../widgets/sidebar.dart';
 
 class NewCategoryScreen extends StatefulWidget {
@@ -15,8 +15,7 @@ class NewCategoryScreen extends StatefulWidget {
 }
 
 class _NewCategoryScreenState extends State<NewCategoryScreen> {
-  final FirebaseService _services = FirebaseService();
-
+  FirebaseService _services = FirebaseService();
   @override
   Widget build(BuildContext context) {
     SideBarWidget sideBar = SideBarWidget();
@@ -41,10 +40,6 @@ class _NewCategoryScreenState extends State<NewCategoryScreen> {
                   "Categories",
                   style: TextStyle(fontWeight: FontWeight.w700, fontSize: 36),
                 ),
-                const Text(
-                  "Manage Vendors",
-                  style: TextStyle(fontSize: 36, fontWeight: FontWeight.w700),
-                ),
                 const Text("Add New Categories and Sub-Categories"),
                 const Divider(
                   thickness: 5,
@@ -53,7 +48,9 @@ class _NewCategoryScreenState extends State<NewCategoryScreen> {
                 const Divider(
                   thickness: 5,
                 ),
-                CategoryListWidget(reference: _services.categories)
+                NewCategoryListWidget(
+                  reference: _services.category,
+                )
               ],
             ),
           ),
