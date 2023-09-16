@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import '../screens/banners_screen.dart';
 import '../screens/category_screen.dart';
 import '../screens/delivery_boy_screen.dart';
 import '../screens/home_screen.dart';
@@ -13,7 +14,6 @@ import '../screens/orders_screen.dart';
 import '../screens/sub_category_screen.dart';
 import '../screens/vendor_screen.dart';
 import 'admin_users.dart';
-import 'manage_banners.dart';
 import 'settings.dart';
 
 class SideBarWidget {

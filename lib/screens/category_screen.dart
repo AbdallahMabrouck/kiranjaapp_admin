@@ -56,8 +56,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
           await ref.putData(image, metaData);
       // image will upload to firebase storage
       // need to get the download link of that image to save in firestore
-      // String downloadURL =
-      await uploadSnapshot.ref.getDownloadURL().then((value) {
+      String downloadURL =
+          await uploadSnapshot.ref.getDownloadURL().then((value) {
         if (value.isNotEmpty) {
           // save data to firestore
           _service.saveCategory(data: {

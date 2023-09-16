@@ -6,15 +6,15 @@ import 'package:flutter_admin_scaffold/admin_scaffold.dart';
 import '../firebase_services.dart';
 import 'banners/banner_widget.dart';
 
-class BannersScreen extends StatefulWidget {
-  const BannersScreen({super.key});
+class ManageBanners extends StatefulWidget {
+  const ManageBanners({super.key});
   static const String id = "banners-screen";
 
   @override
-  State<BannersScreen> createState() => _BannersScreenState();
+  State<ManageBanners> createState() => _ManageBannersState();
 }
 
-class _BannersScreenState extends State<BannersScreen> {
+class _ManageBannersState extends State<ManageBanners> {
   // SideBarWidget sideBar = SideBarWidget();
   final FirebaseService _services = FirebaseService();
   final _fileNameTextController = TextEditingController();

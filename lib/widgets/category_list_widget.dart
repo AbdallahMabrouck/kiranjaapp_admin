@@ -16,7 +16,40 @@ class _CategoryListWidgetState extends State<CategoryListWidget> {
   QuerySnapshot? snapshot;
 
   Widget categoryWidget(data) {
-    return Card(
+    return SizedBox(
+      height: 120,
+      width: 120,
+      child: Card(
+        // color: Colors.grey.shade100,
+        elevation: 4,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  height: 70,
+                  width: double.infinity,
+                  child: Image.network(data["image"]),
+                ),
+                FittedBox(
+                  fit: BoxFit.contain,
+                  child: Text(
+                    widget.reference == _service.categories
+                        ? data["catName"]
+                        : data["subCatName"],
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+
+    /*Card(
       color: Colors.grey.shade400,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -39,7 +72,7 @@ class _CategoryListWidgetState extends State<CategoryListWidget> {
           ],
         ),
       ),
-    );
+    );*/
   }
 
   Widget _dropDownButton() {
