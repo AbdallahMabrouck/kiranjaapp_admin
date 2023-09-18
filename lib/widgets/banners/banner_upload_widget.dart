@@ -4,7 +4,7 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import '../../firebase_services.dart';
 
 class BannerUploadWidget extends StatefulWidget {
-  const BannerUploadWidget({super.key});
+  const BannerUploadWidget({Key? key}) : super(key: key);
 
   @override
   State<BannerUploadWidget> createState() => _BannerUploadWidgetState();

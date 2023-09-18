@@ -46,7 +46,8 @@ class BannerWidget extends StatelessWidget {
                                           as Map<String, dynamic>)["image"] ??
                                       '',
                                   width: 400,
-                                  fit: BoxFit.fill,
+                                  height: 200,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                             ),
