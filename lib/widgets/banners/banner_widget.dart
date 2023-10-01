@@ -27,7 +27,7 @@ class BannerWidget extends StatelessWidget {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: snapshot.data?.docs.map((DocumentSnapshot? document) {
-                  if (document == null || !document.exists) {
+                  if (!document!.exists) {
                     return const SizedBox();
                   }
                   return Padding(
@@ -42,9 +42,7 @@ class BannerWidget extends StatelessWidget {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(4),
                                 child: Image.network(
-                                  (document.data()
-                                          as Map<String, dynamic>)["image"] ??
-                                      '',
+                                  document["image"] ?? "",
                                   width: 400,
                                   height: 200,
                                   fit: BoxFit.cover,
