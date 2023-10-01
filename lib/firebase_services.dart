@@ -17,15 +17,15 @@ class FirebaseService {
   CollectionReference vendors =
       FirebaseFirestore.instance.collection("vendors");
   CollectionReference boys = FirebaseFirestore.instance.collection("boys");
-  CollectionReference category =
-      FirebaseFirestore.instance.collection("category");
+   CollectionReference category = FirebaseFirestore.instance.collection("category");
 
-  Future<void> saveCategory(
+   Future<void> saveCategory(
       {CollectionReference? reference,
       Map<String, dynamic>? data,
       String? docName}) {
-    return reference!.doc(docName).set(data);
-  }
+   return reference!.doc(docName).set(data);
+   }
+
 
   Future<void> updateData(
       {CollectionReference? reference,
